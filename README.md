@@ -7,7 +7,7 @@
 
 # About
 
-Convenient way to use map with object-like syntax in Javascript and Typescript
+Convenient way to use maps with object-like syntax in Javascript and Typescript
 
 # Installation
 
