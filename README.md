@@ -18,7 +18,7 @@ npm install map-assist
 # Usage
 
 ```ts
-import { myPackage } from 'map-assist';
+import { jsonParse, jsonStringify } from 'map-assist';
 ```
 
 [downloads-img]: https://img.shields.io/npm/dt/map-assist
