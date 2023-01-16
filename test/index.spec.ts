@@ -1,13 +1,9 @@
-import { myPackage } from '../src';
+import '../src';
 
-describe('index', () => {
-  describe('myPackage', () => {
-    it('should return a string containing the message', () => {
-      const message = 'Hello';
+let a = {
+  dgsdgsd: 3,
+  shgashehsehes: [1, 2, 3, 4, 5, 6, 7],
+  sddsgsdhsdahsdfhf: { aeg: 2362, dsahgweahewh: 457237 },
+}.asMap();
 
-      const result = myPackage(message);
-
-      expect(result).toMatch(message);
-    });
-  });
-});
+console.log(a);
