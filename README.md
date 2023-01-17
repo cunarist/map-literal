@@ -10,7 +10,7 @@
 Convenient way to use maps with object-like syntax in Javascript and Typescript
 
 ```typescript
-import 'map-assist';
+import 'map-literal';
 
 // This is a Map, not an Object
 const someMap = {
@@ -103,23 +103,23 @@ That's the reason this library exists. We need a way to use `Map` type convenien
 # Installation
 
 ```bash
-npm install map-assist
+npm install map-literal
 ```
 
 # Usage
 
 ```ts
-import { jsonParse, jsonStringify } from 'map-assist';
+import { jsonParse, jsonStringify } from 'map-literal';
 ```
 
-[downloads-img]: https://img.shields.io/npm/dt/map-assist
-[downloads-url]: https://www.npmtrends.com/map-assist
-[npm-img]: https://img.shields.io/npm/v/map-assist
-[npm-url]: https://www.npmjs.com/package/map-assist
-[issues-img]: https://img.shields.io/github/issues/ryansonshine/map-assist
-[issues-url]: https://github.com/ryansonshine/map-assist/issues
-[codecov-img]: https://codecov.io/gh/ryansonshine/map-assist/branch/main/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/ryansonshine/map-assist
+[downloads-img]: https://img.shields.io/npm/dt/map-literal
+[downloads-url]: https://www.npmtrends.com/map-literal
+[npm-img]: https://img.shields.io/npm/v/map-literal
+[npm-url]: https://www.npmjs.com/package/map-literal
+[issues-img]: https://img.shields.io/github/issues/ryansonshine/map-literal
+[issues-url]: https://github.com/ryansonshine/map-literal/issues
+[codecov-img]: https://codecov.io/gh/ryansonshine/map-literal/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/ryansonshine/map-literal
 [semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
