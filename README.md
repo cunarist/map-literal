@@ -5,9 +5,22 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
+[downloads-img]: https://img.shields.io/npm/dt/map-literal
+[downloads-url]: https://www.npmtrends.com/map-literal
+[npm-img]: https://img.shields.io/npm/v/map-literal
+[npm-url]: https://www.npmjs.com/package/map-literal
+[issues-img]: https://img.shields.io/github/issues/ryansonshine/map-literal
+[issues-url]: https://github.com/ryansonshine/map-literal/issues
+[codecov-img]: https://codecov.io/gh/ryansonshine/map-literal/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/ryansonshine/map-literal
+[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
+[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[commitizen-url]: http://commitizen.github.io/cz-cli/
+
 # About
 
-Convenient way to use maps with object-like syntax in Javascript and Typescript
+Convenient way to use Maps with Object-like syntax in Javascript and Typescript
 
 ```typescript
 import 'map-literal'; // Just import it and everything is ready
@@ -31,34 +44,18 @@ const someMap = {
   },
 }.asMaps(); // Just add this at the end!
 
+// Also works well for nested structures
 console.log(someMap.get('secondKey')); // 66
 console.log(someMap.get('inner').get('deeper').get('me')); //777
-
 someMap.get('inner').set('newKey', 'newValue');
 console.log(someMap.get('inner').get('newKey')); //'newValue'
-
-console.log(someMap);
-/*
-Map(4) {
-  'firstKey' => 33,
-  'secondKey' => 66,
-  'thirdKey' => 99,
-  'insideStructure' => Map(4) {
-    'firstArray' => [ 4, 8, 12, 16, 20 ],
-    'secondArray' => [ 24, 28, 32, 36, 40 ],
-    'thirdArray' => [ 44, 48, 52, 56, 60 ],
-    'evenDeeper' => Map(5) {
-      'give' => true,
-      'me' => 777,
-      'some' => 'What',
-      'hamburger' => null,
-      'now' => 3.14159265
-    },
-    'newKey' => 'newValue'
-  }
-}
-*/
 ```
+
+- `Map` literal syntax
+- Full support for nested structures
+- Full integration with all container types: `Array`, `Map`, `Set`
+- Full Typescript support
+- JSON to `Map` structure, `Map` structure to JSON conversion
 
 # Why This was Made
 
@@ -82,23 +79,37 @@ const someObject = {
 };
 
 console.log(someObject.firstProperty); // 33 - Okay
+console.log(someObject.secondProperty); // 66 - Okay
 console.log(someObject.thirdProperty); // 99 - Okay
+console.log(someObject.house); // undefined - Okay
 console.log(someObject.hasOwnProperty); // [Function: hasOwnProperty] - Huh?
 ```
 
 As you can see, all objects have underlying attributes even if we haven't explicitly added it. Basically all key-value pairs of an object are mixed with prototype attributes.
 
-However, manually creating a map structure is quite cumbersome and not intuitive.
+Unlike `Object`, `Map` type provides higher performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
+
+```typescript
+const someMap = new Map();
+someMap.set('firstKey', 33);
+someMap.set('secondKey', 66);
+someMap.has('someKey'); // false
+someMap.values(); // [33, 66]
+```
+
+So, Now we know that `Map` is the proper dictionary type. However, manually creating a `Map` structure via its normal syntax is quite cumbersome and not so intuitive.
 
 ```typescript
 const someMap = new Map();
 someMap.set('firstKey', 33);
 someMap.set('secondKey', 66);
 someMap.set('thirdKey', 99);
+const innerMap = new Map();
+someMap.set('inner', innerMap);
 // This goes on and on...
 ```
 
-That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which do not exist in ECMAScript standard.
+That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
 
 # Installation
 
@@ -108,19 +119,142 @@ npm install map-literal
 
 # Usage
 
-```ts
-import { jsonParse, jsonStringify } from 'map-literal';
+This is the basic map literal syntax.
+
+```typescript
+import 'map-literal';
+
+// We meet again
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  inner: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+    deeper: {
+      give: true,
+      me: 777,
+      some: 'What',
+      hamburger: null,
+      now: 3.14159265,
+    },
+  },
+}.asMaps();
 ```
 
-[downloads-img]: https://img.shields.io/npm/dt/map-literal
-[downloads-url]: https://www.npmtrends.com/map-literal
-[npm-img]: https://img.shields.io/npm/v/map-literal
-[npm-url]: https://www.npmjs.com/package/map-literal
-[issues-img]: https://img.shields.io/github/issues/ryansonshine/map-literal
-[issues-url]: https://github.com/ryansonshine/map-literal/issues
-[codecov-img]: https://codecov.io/gh/ryansonshine/map-literal/branch/main/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/ryansonshine/map-literal
-[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]: https://github.com/semantic-release/semantic-release
-[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]: http://commitizen.github.io/cz-cli/
+Also works well on `Array`...
+
+```typescript
+import 'map-literal';
+
+const someArray = [
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+].asMaps();
+```
+
+and even `Set`!
+
+```typescript
+import 'map-literal';
+
+const someSet = new Set([
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+  {
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  },
+]).asMaps();
+```
+
+Parsing JSON is very convenient...
+
+```typescript
+import { jsonParse, jsonStringify } from 'map-literal';
+
+const jsonString =
+  '{ "glossary": { "title": "example glossary", "GlossDiv": { "title": "S", "GlossList": { "GlossEntry": { "ID": "SGML", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 8879:1986", "GlossDef": { "para": "A meta-markup language, used to create markup languages such as DocBook.", "GlossSeeAlso": ["GML", "XML"] }, "GlossSee": "markup" } } } } }';
+
+// Structure comprised of Maps and Arrays
+const someMap = jsonParse(jsonString);
+```
+
+as well as stringifying to JSON.
+
+```typescript
+import { jsonParse, jsonStringify } from 'map-literal';
+
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  inner: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+    deeper: {
+      give: true,
+      me: 777,
+      some: 'What',
+      hamburger: null,
+      now: 3.14159265,
+    },
+  },
+}.asMaps();
+
+// JSON string
+const jsonString = jsonStringify(someMap);
+```
+
+Though not encouraged, you can convert the structure into `Object` if you want.
+
+```typescript
+import 'map-literal';
+
+// Map and Array Structure
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  inner: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+    deeper: {
+      give: true,
+      me: 777,
+      some: 'What',
+      hamburger: null,
+      now: 3.14159265,
+    },
+  },
+}.asMaps();
+
+// Object and Array structure
+const someObject = someMap.asObjects();
+```
