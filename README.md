@@ -10,7 +10,7 @@
 Convenient way to use maps with object-like syntax in Javascript and Typescript
 
 ```typescript
-import 'map-literal';
+import 'map-literal'; // Just import it and everything is ready
 
 // This is a Map, not an Object
 const someMap = {
