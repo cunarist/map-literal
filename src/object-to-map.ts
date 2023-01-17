@@ -1,15 +1,15 @@
-function convertObject<V>(original: Object): Map<string, V> {
-  const newlyCreated = new Map<string, V>();
+function convertObject(original: Object): Map<string, any> {
+  const newlyCreated = new Map<string, any>();
   for (const [itemKey, itemValue] of Object.entries(original)) {
     if (itemValue != null) {
       if (itemValue.constructor == Object) {
-        newlyCreated.set(itemKey, convertObject(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertObject(itemValue));
       } else if (itemValue.constructor == Map) {
-        newlyCreated.set(itemKey, convertMap(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertMap(itemValue));
       } else if (itemValue.constructor == Array) {
-        newlyCreated.set(itemKey, convertArray(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertArray(itemValue));
       } else if (itemValue.constructor == Set) {
-        newlyCreated.set(itemKey, convertSet(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertSet(itemValue));
       } else {
         newlyCreated.set(itemKey, itemValue);
       }
@@ -20,19 +20,18 @@ function convertObject<V>(original: Object): Map<string, V> {
   return newlyCreated;
 }
 
-function convertMap<K, V>(original: Map<K, V>): Map<K, V> {
-  const newlyCreated = new Map<K, V>();
-  for (const [itemKey, itemValueV] of original.entries()) {
-    const itemValue = itemValueV as any;
+function convertMap<K>(original: Map<K, any>): Map<K, any> {
+  const newlyCreated = new Map<K, any>();
+  for (const [itemKey, itemValue] of original.entries()) {
     if (itemValue != null) {
       if (itemValue.constructor == Object) {
-        newlyCreated.set(itemKey, convertObject(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertObject(itemValue));
       } else if (itemValue.constructor == Map) {
-        newlyCreated.set(itemKey, convertMap(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertMap(itemValue));
       } else if (itemValue.constructor == Array) {
-        newlyCreated.set(itemKey, convertArray(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertArray(itemValue));
       } else if (itemValue.constructor == Set) {
-        newlyCreated.set(itemKey, convertSet(itemValue) as unknown as V);
+        newlyCreated.set(itemKey, convertSet(itemValue));
       } else {
         newlyCreated.set(itemKey, itemValue);
       }
@@ -43,18 +42,18 @@ function convertMap<K, V>(original: Map<K, V>): Map<K, V> {
   return newlyCreated;
 }
 
-function convertArray<V>(original: Array<V>): Array<V> {
-  const newlyCreated = new Array<V>();
-  for (const itemValue of original as any) {
+function convertArray(original: Array<any>): Array<any> {
+  const newlyCreated = new Array<any>();
+  for (const itemValue of original) {
     if (itemValue != null) {
       if (itemValue.constructor == Object) {
-        newlyCreated.push(convertObject(itemValue) as unknown as V);
+        newlyCreated.push(convertObject(itemValue));
       } else if (itemValue.constructor == Map) {
-        newlyCreated.push(convertMap(itemValue) as unknown as V);
+        newlyCreated.push(convertMap(itemValue));
       } else if (itemValue.constructor == Array) {
-        newlyCreated.push(convertArray(itemValue) as unknown as V);
+        newlyCreated.push(convertArray(itemValue));
       } else if (itemValue.constructor == Set) {
-        newlyCreated.push(convertSet(itemValue) as unknown as V);
+        newlyCreated.push(convertSet(itemValue));
       } else {
         newlyCreated.push(itemValue);
       }
@@ -65,18 +64,18 @@ function convertArray<V>(original: Array<V>): Array<V> {
   return newlyCreated;
 }
 
-function convertSet<V>(original: Set<V>): Set<V> {
-  const newlyCreated = new Set<V>();
-  for (const itemValue of original as any) {
+function convertSet(original: Set<any>): Set<any> {
+  const newlyCreated = new Set<any>();
+  for (const itemValue of original) {
     if (itemValue != null) {
       if (itemValue.constructor == Object) {
-        newlyCreated.add(convertObject(itemValue) as unknown as V);
+        newlyCreated.add(convertObject(itemValue));
       } else if (itemValue.constructor == Map) {
-        newlyCreated.add(convertMap(itemValue) as unknown as V);
+        newlyCreated.add(convertMap(itemValue));
       } else if (itemValue.constructor == Array) {
-        newlyCreated.add(convertArray(itemValue) as unknown as V);
+        newlyCreated.add(convertArray(itemValue));
       } else if (itemValue.constructor == Set) {
-        newlyCreated.add(convertSet(itemValue) as unknown as V);
+        newlyCreated.add(convertSet(itemValue));
       } else {
         newlyCreated.add(itemValue);
       }
@@ -89,34 +88,36 @@ function convertSet<V>(original: Set<V>): Set<V> {
 
 declare global {
   interface Object {
-    asMap<V>(): Map<string, V>;
+    asMaps(): Map<string, any>;
   }
   interface Map<K, V> {
-    asMap<K, V>(): Map<K, V>;
+    asMaps(): Map<K, any>;
   }
   interface Array<T> {
-    asMap<V>(): Array<V>;
+    asMaps(): Array<any>;
   }
   interface Set<T> {
-    asMap<V>(): Set<V>;
+    asMaps(): Set<any>;
   }
 }
 
-Object.prototype.asMap = function <V>() {
-  // @ts-ignore
-  return convertObject<V>(this);
+Object.prototype.asMaps = function () {
+  if (this.constructor == Object) {
+    return convertObject(this);
+  } else {
+    throw new TypeError(
+      "'asMaps' method can only be used on Object, Map, Array, Set types."
+    );
+  }
 };
-Map.prototype.asMap = function <K, V>() {
-  // @ts-ignore
-  return convertMap<K, V>(this);
+Map.prototype.asMaps = function () {
+  return convertMap(this);
 };
-Array.prototype.asMap = function <V>() {
-  // @ts-ignore
-  return convertArray<V>(this);
+Array.prototype.asMaps = function () {
+  return convertArray(this);
 };
-Set.prototype.asMap = function <V>() {
-  // @ts-ignore
-  return convertSet<V>(this);
+Set.prototype.asMaps = function () {
+  return convertSet(this);
 };
 
-export default {};
+export default { convertObject, convertMap, convertArray, convertSet };

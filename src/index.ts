@@ -1,12 +1,14 @@
-import './object-to-map';
+import objectToMap from './object-to-map';
 import mapToObject from './map-to-object';
+
+export { objectToMap, mapToObject };
 
 export function jsonParse(json: string): any {
   const parsed = JSON.parse(json);
   if (parsed.constructor == Object) {
-    return parsed.asMap();
+    return parsed.asMaps();
   } else if (parsed.constructor == Array) {
-    return parsed.asMap();
+    return parsed.asMaps();
   } else {
     return parsed;
   }

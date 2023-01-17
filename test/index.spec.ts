@@ -1,14 +1,8 @@
 import { jsonStringify, jsonParse } from '../src';
 
-let a = [
-  {
-    dgsdgsd: 3,
-    shgashehsehes: [1, 2, 3, 4, 5, 6, 7],
-    sddsgsdhsdahsdfhf: { aeg: 2362, dsahgweahewh: 457237 },
-  },
-  5,
-  6,
-].asMap();
+let a = [{ dsfd: 623 }, { ashgeh: 3, sdga: 33 }];
+let b = a.asMaps();
+let c = b.asObjects();
 
 console.log(a);
 
@@ -17,3 +11,16 @@ console.log(jsonMap);
 
 let parsed = jsonParse(jsonMap);
 console.log(parsed);
+
+let z = 3;
+let za = z.asMaps();
+
+function dothis(yes: boolean) {
+  if (yes) {
+    return 3;
+  } else {
+    return 'Dfsdf';
+  }
+}
+
+let sdgads = dothis(true);
