@@ -59,7 +59,7 @@ console.log(someMap.get('inner').get('newKey')); //'newValue'
 
 # Why This was Made
 
-`Object` in Javascript and Typescript shouldn't be used as dictionaries!
+`Object` in Javascript and Typescript shouldn't be used as dictionary!
 
 There are 3 container types in Javascript and Typescript:
 
