@@ -1,26 +1,21 @@
-import { jsonStringify, jsonParse } from '../src';
+import '../src/index';
 
-let a = [{ dsfd: 623 }, { ashgeh: 3, sdga: 33 }];
-let b = a.asMaps();
-let c = b.asObjects();
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  insideStructure: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+    evenDeeper: {
+      give: true,
+      me: 777,
+      some: 'What',
+      hamburger: null,
+      now: 3.14159265,
+    },
+  },
+}.asMaps();
 
-console.log(a);
-
-let jsonMap = jsonStringify(a);
-console.log(jsonMap);
-
-let parsed = jsonParse(jsonMap);
-console.log(parsed);
-
-let z = 3;
-let za = z.asMaps();
-
-function dothis(yes: boolean) {
-  if (yes) {
-    return 3;
-  } else {
-    return 'Dfsdf';
-  }
-}
-
-let sdgads = dothis(true);
+console.log(someMap);
