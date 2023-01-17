@@ -1,7 +1,7 @@
 {
   "name": "map-literal",
   "version": "1.2",
-  "description": "Convenient way to use map with object-like syntax in Javascript and Typescript",
+  "description": "Convenient way to use Maps with Object-like syntax in Javascript and Typescript",
   "main": "./lib/index.js",
   "files": [
     "lib/**/*"
