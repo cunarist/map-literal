@@ -183,9 +183,9 @@ const someSet = new Set([
     thirdKey: 99,
   },
   {
-    firstKey: 33,
-    secondKey: 66,
-    thirdKey: 99,
+    firstKey: 22,
+    secondKey: 55,
+    thirdKey: 88,
   },
 ]).asMaps();
 ```
