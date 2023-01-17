@@ -96,7 +96,7 @@ someMap.set('thirdKey', 99);
 // This goes on and on...
 ```
 
-That's the reason this library exists. We need a way to use `Map` type conveniently just like we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which do not exist in ECMAScript standard.
+That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which do not exist in ECMAScript standard.
 
 # Installation
 
