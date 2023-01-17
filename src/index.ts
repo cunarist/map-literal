@@ -1,7 +1,7 @@
-import objectToMap from './object-to-map';
-import mapToObject from './map-to-object';
+import objectsToMaps from './objects-as-maps';
+import mapsToObjects from './maps-as-objects';
 
-export { objectToMap, mapToObject };
+export { objectsToMaps, mapsToObjects };
 
 export function jsonParse(json: string): any {
   const parsed = JSON.parse(json);
@@ -16,9 +16,9 @@ export function jsonParse(json: string): any {
 
 export function jsonStringify(original: any): any {
   if (original.constructor == Map) {
-    return JSON.stringify(mapToObject.convertMap(original));
+    return JSON.stringify(mapsToObjects.convertMap(original));
   } else if (original.constructor == Array) {
-    return JSON.stringify(mapToObject.convertArray(original));
+    return JSON.stringify(mapsToObjects.convertArray(original));
   } else {
     return JSON.stringify(original);
   }
