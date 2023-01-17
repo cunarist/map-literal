@@ -67,9 +67,7 @@ There are 3 container types in Javascript and Typescript:
 - `Map`: Dictionary(Hashmap) type where data are stored in key-value pairs
 - `Set`: Storage type for sequencial items without any duplicated value
 
-`Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data.
-
-Why is it inappropriate to use `Object` as dictionary? Well, a picture is worth a thousand words...
+`Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
 
 ```typescript
 const someObject = {
@@ -85,7 +83,7 @@ console.log(someObject.house); // undefined - Okay
 console.log(someObject.hasOwnProperty); // [Function: hasOwnProperty] - Huh?
 ```
 
-As you can see, all objects have underlying attributes even if we haven't explicitly added it. Basically all key-value pairs of an object are mixed with prototype attributes.
+As you can see, all objects have underlying attributes even if we haven't explicitly added it. Basically all attributes of an object are mixed with prototype attributes.
 
 Unlike `Object`, `Map` type provides higher performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
 
