@@ -95,7 +95,7 @@ someMap.has('someKey'); // false
 someMap.values(); // [33, 66]
 ```
 
-So, Now we know that `Map` is the proper dictionary type. However, manually creating a `Map` structure via its normal syntax is quite cumbersome and not so intuitive.
+So now we know that `Map` is the proper dictionary type. However, manually creating a `Map` structure via its normal syntax is quite cumbersome and not so intuitive.
 
 ```typescript
 const someMap = new Map();
