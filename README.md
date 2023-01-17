@@ -10,6 +10,8 @@
 Convenient way to use maps with object-like syntax in Javascript and Typescript
 
 ```typescript
+import 'map-assist';
+
 // This is a Map, not an Object
 const someMap = {
   firstKey: 33,
