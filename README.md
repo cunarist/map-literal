@@ -44,7 +44,7 @@ const someMap = {
   },
 }.asMaps(); // Just add this at the end!
 
-// Also works well on nested structures
+// Works well on nested structures
 console.log(someMap.get('secondKey')); // 66
 console.log(someMap.get('inner').get('deeper').get('me')); //777
 someMap.get('inner').set('newKey', 'newValue');
