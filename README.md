@@ -9,6 +9,18 @@
 
 Convenient way to use maps with object-like syntax in Javascript and Typescript
 
+# Why This was Made
+
+Objects in Javascript and Typescript shouldn't be used as dictionary purposes!
+
+There are 3 container types in Javascript and Typescript:
+
+- `Array`: Storage for sequencial items as we all know
+- `Map`: Hashmap where data are stored in key-value pairs
+- `Set`: Storage for sequencial items without any duplicated value
+
+`Object` is not a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). That's why all non-primitive types in Javascript and Typescript inherit properties and methods of `Object` type. Although `Object` was recognized as storing data with names, it is not a proper way to store key-value pairs of data.
+
 # Installation
 
 ```bash
