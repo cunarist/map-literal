@@ -16,18 +16,18 @@ function convert(original: any): any {
   }
 }
 
-function convertObject(original: Object): Map<string, any> {
-  const newlyCreated = new Map<string, any>();
+function convertObject(original: Object): Object {
+  const newlyCreated: { [index: string]: any } = new Object();
   for (const [itemKey, itemValue] of Object.entries(original)) {
-    newlyCreated.set(itemKey, convert(itemValue));
+    newlyCreated[itemKey] = convert(itemValue);
   }
   return newlyCreated;
 }
 
-function convertMap<K>(original: Map<K, any>): Map<K, any> {
-  const newlyCreated = new Map<K, any>();
+function convertMap(original: Map<string, any>): Object {
+  const newlyCreated: { [index: string]: any } = new Object();
   for (const [itemKey, itemValue] of original.entries()) {
-    newlyCreated.set(itemKey, convert(itemValue));
+    newlyCreated[itemKey] = convert(itemValue);
   }
   return newlyCreated;
 }
@@ -50,35 +50,35 @@ function convertSet(original: Set<any>): Set<any> {
 
 declare global {
   interface Object {
-    asMaps(): Map<string, any>;
+    asObjectTree(): Object;
   }
   interface Map<K, V> {
-    asMaps(): Map<K, any>;
+    asObjectTree(): Object;
   }
   interface Array<T> {
-    asMaps(): Array<any>;
+    asObjectTree(): Array<any>;
   }
   interface Set<T> {
-    asMaps(): Set<any>;
+    asObjectTree(): Set<any>;
   }
 }
 
-Object.prototype.asMaps = function () {
+Object.prototype.asObjectTree = function () {
   if (this.constructor == Object) {
     return convertObject(this);
   } else {
     throw new TypeError(
-      "'asMaps' method can only be used on Object, Map, Array, Set types."
+      "'asObjectTree' method can only be used on Object, Map, Array, Set types."
     );
   }
 };
-Map.prototype.asMaps = function () {
+Map.prototype.asObjectTree = function () {
   return convertMap(this);
 };
-Array.prototype.asMaps = function () {
+Array.prototype.asObjectTree = function () {
   return convertArray(this);
 };
-Set.prototype.asMaps = function () {
+Set.prototype.asObjectTree = function () {
   return convertSet(this);
 };
 

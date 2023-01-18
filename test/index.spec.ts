@@ -16,6 +16,6 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMaps();
+}.asMapTree();
 
 console.log(someMap);

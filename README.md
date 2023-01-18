@@ -42,7 +42,7 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMaps(); // Just add this at the end!
+}.asMapTree(); // Just add this at the end!
 
 // Works well on nested structures
 console.log(someMap.get('secondKey')); // 66
@@ -139,7 +139,7 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMaps();
+}.asMapTree();
 ```
 
 Also works well on `Array`...
@@ -168,7 +168,7 @@ const someArray = [
     secondKey: 66,
     thirdKey: 99,
   },
-].asMaps();
+].asMapTree();
 ```
 
 and even `Set`!
@@ -187,7 +187,7 @@ const someSet = new Set([
     secondKey: 55,
     thirdKey: 88,
   },
-]).asMaps();
+]).asMapTree();
 ```
 
 Parsing JSON is very convenient...
@@ -223,7 +223,7 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMaps();
+}.asMapTree();
 
 // JSON string
 const jsonString = jsonStringify(someMap);
@@ -251,8 +251,8 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMaps();
+}.asMapTree();
 
 // Object and Array structure
-const someObject = someMap.asObjects();
+const someObject = someMap.asObjectTree();
 ```
