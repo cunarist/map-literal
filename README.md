@@ -20,12 +20,12 @@
 
 # About
 
-Convenient way to use Maps with Object-like syntax in Javascript and Typescript
+Convenient way to use Maps with Object-like syntax in JavaScript and TypeScript
 
-```typescript
+```TypeScript
 import "map-literal"; // Just import it and everything is ready
 
-// This is a Map tree, not an Object tree
+// This is a Map, not an Object
 const someMap = {
   firstKey: 33,
   secondKey: 66,
@@ -54,14 +54,14 @@ console.log(someMap.get("inner").get("newKey")); //'newValue'
 - `Map` literal syntax
 - Full support for nested structures
 - Full integration with all container types: `Array`, `Map`, `Set`
-- Full Typescript support
+- Full TypeScript support
 - JSON to `Map` tree, `Map` tree to JSON conversion
 
 # Why This was Made
 
-`Object` in Javascript and Typescript shouldn't be used as dictionary!
+`Object` in JavaScript and TypeScript shouldn't be used as dictionary!
 
-There are 3 container types in Javascript and Typescript:
+There are 3 container types in JavaScript and TypeScript:
 
 - `Array`: Storage type for sequencial items as we all know
 - `Map`: Dictionary(Hashmap) type where data are stored in key-value pairs
@@ -69,7 +69,7 @@ There are 3 container types in Javascript and Typescript:
 
 `Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
 
-```typescript
+```TypeScript
 const someObject = {
   firstProperty: 33,
   secondProperty: 66,
@@ -87,7 +87,7 @@ As you can see, all objects have underlying attributes even if we haven't explic
 
 Unlike `Object`, `Map` type provides higher performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
 
-```typescript
+```TypeScript
 const someMap = new Map();
 someMap.set("firstKey", 33);
 someMap.set("secondKey", 66);
@@ -97,7 +97,7 @@ someMap.values(); // [33, 66]
 
 So now we know that `Map` is the proper dictionary type. However, manually creating a `Map` tree via its normal syntax is quite cumbersome and not so intuitive.
 
-```typescript
+```TypeScript
 const someMap = new Map();
 someMap.set("firstKey", 33);
 someMap.set("secondKey", 66);
@@ -122,9 +122,11 @@ npm install map-literal
 
 # Usage
 
+## General Situation
+
 This is the basic map literal syntax.
 
-```typescript
+```TypeScript
 import "map-literal";
 
 // We meet again
@@ -149,7 +151,7 @@ const someMap = {
 
 Also works well on `Array`...
 
-```typescript
+```TypeScript
 import "map-literal";
 
 const someArray = [
@@ -178,7 +180,7 @@ const someArray = [
 
 and even `Set`!
 
-```typescript
+```TypeScript
 import "map-literal";
 
 const someSet = new Set([
@@ -195,9 +197,39 @@ const someSet = new Set([
 ]).asMapTree();
 ```
 
-Parsing JSON is very convenient...
+Though not encouraged, you can convert the structure into `Object` if you want.
 
-```typescript
+```TypeScript
+import "map-literal";
+
+// Map tree
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  inner: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+    deeper: {
+      give: true,
+      me: 777,
+      some: "What",
+      hamburger: null,
+      now: 3.14159265,
+    },
+  },
+}.asMapTree();
+
+// Object tree
+const someObject = someMap.asObjectTree();
+```
+
+## Dealing with JSON
+
+Parsing JSON is easy.
+
+```TypeScript
 import { jsonParse, jsonStringify } from "map-literal";
 
 const jsonString =
@@ -207,9 +239,9 @@ const jsonString =
 const someMap = jsonParse(jsonString);
 ```
 
-as well as stringifying to JSON.
+Stringifying to JSON is also easy.
 
-```typescript
+```TypeScript
 import { jsonParse, jsonStringify } from "map-literal";
 
 const someMap = {
@@ -234,12 +266,13 @@ const someMap = {
 const jsonString = jsonStringify(someMap);
 ```
 
-Though not encouraged, you can convert the structure into `Object` if you want.
+## Using TypeScript
+
+Contents of the returned value has `any` type.
 
 ```typescript
 import "map-literal";
 
-// Map tree
 const someMap = {
   firstKey: 33,
   secondKey: 66,
@@ -247,17 +280,49 @@ const someMap = {
   inner: {
     firstArray: [4, 8, 12, 16, 20],
     secondArray: [24, 28, 32, 36, 40],
-    thirdArray: [44, 48, 52, 56, 60],
-    deeper: {
-      give: true,
-      me: 777,
-      some: "What",
-      hamburger: null,
-      now: 3.14159265,
-    },
   },
 }.asMapTree();
 
-// Object tree
-const someObject = someMap.asObjectTree();
+const varOne = someMap; // Map<string, any>
+```
+
+Therefore, if you need to clarify types of items extracted from the tree, you will need to manually perform type assertion.
+
+```typescript
+import "map-literal";
+
+const someMap = {
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+  inner: {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+  },
+}.asMapTree();
+
+const varOne = someMap.get("inner"); // any
+const varTwo = someMap.get("inner") as Map<string, any>; // Map<string, any>
+```
+
+Alternatively, if the tree is simple enough you can perform type assertion directly on the tree.
+
+```typescript
+import "map-literal";
+
+const someMap = [
+  {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+  },
+  {
+    firstArray: [4, 8, 12, 16, 20],
+    secondArray: [24, 28, 32, 36, 40],
+    thirdArray: [44, 48, 52, 56, 60],
+  },
+].asMapTree() as Array<Map<string, Array<Number>>>;
+
+const varOne = someMap[0]; // Map<string,Array<Number>>
+const varTwo = someMap[0].get("thirdArray")![4]; // Number
 ```
