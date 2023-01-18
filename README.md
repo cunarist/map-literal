@@ -23,7 +23,7 @@
 Convenient way to use Maps with Object-like syntax in Javascript and Typescript
 
 ```typescript
-import 'map-literal'; // Just import it and everything is ready
+import "map-literal"; // Just import it and everything is ready
 
 // This is a Map, not an Object
 const someMap = {
@@ -37,7 +37,7 @@ const someMap = {
     deeper: {
       give: true,
       me: 777,
-      some: 'What',
+      some: "What",
       hamburger: null,
       now: 3.14159265,
     },
@@ -45,17 +45,17 @@ const someMap = {
 }.asMapTree(); // Just add this at the end!
 
 // Works well on nested structures
-console.log(someMap.get('secondKey')); // 66
-console.log(someMap.get('inner').get('deeper').get('me')); //777
-someMap.get('inner').set('newKey', 'newValue');
-console.log(someMap.get('inner').get('newKey')); //'newValue'
+console.log(someMap.get("secondKey")); // 66
+console.log(someMap.get("inner").get("deeper").get("me")); //777
+someMap.get("inner").set("newKey", "newValue");
+console.log(someMap.get("inner").get("newKey")); //'newValue'
 ```
 
 - `Map` literal syntax
 - Full support for nested structures
 - Full integration with all container types: `Array`, `Map`, `Set`
 - Full Typescript support
-- JSON to `Map` structure, `Map` structure to JSON conversion
+- JSON to `Map` tree, `Map` tree to JSON conversion
 
 # Why This was Made
 
@@ -89,21 +89,21 @@ Unlike `Object`, `Map` type provides higher performance and convenient utility m
 
 ```typescript
 const someMap = new Map();
-someMap.set('firstKey', 33);
-someMap.set('secondKey', 66);
-someMap.has('someKey'); // false
+someMap.set("firstKey", 33);
+someMap.set("secondKey", 66);
+someMap.has("someKey"); // false
 someMap.values(); // [33, 66]
 ```
 
-So now we know that `Map` is the proper dictionary type. However, manually creating a `Map` structure via its normal syntax is quite cumbersome and not so intuitive.
+So now we know that `Map` is the proper dictionary type. However, manually creating a `Map` tree via its normal syntax is quite cumbersome and not so intuitive.
 
 ```typescript
 const someMap = new Map();
-someMap.set('firstKey', 33);
-someMap.set('secondKey', 66);
-someMap.set('thirdKey', 99);
+someMap.set("firstKey", 33);
+someMap.set("secondKey", 66);
+someMap.set("thirdKey", 99);
 const innerMap = new Map();
-someMap.set('inner', innerMap);
+someMap.set("inner", innerMap);
 // This goes on and on...
 ```
 
@@ -115,12 +115,17 @@ That's the reason this library exists. We need a way to use `Map` type convenien
 npm install map-literal
 ```
 
+# Glossary
+
+- Map tree: Structure made up of `Map`, `Array` and possibly `Set`. This is the recommended way of storing complex data.
+- Object tree: Structure made up of `Object`, `Array` and possibly `Set`. Not recommended since `Object` is not appropriate for storing key-value pairs of data.
+
 # Usage
 
 This is the basic map literal syntax.
 
 ```typescript
-import 'map-literal';
+import "map-literal";
 
 // We meet again
 const someMap = {
@@ -134,7 +139,7 @@ const someMap = {
     deeper: {
       give: true,
       me: 777,
-      some: 'What',
+      some: "What",
       hamburger: null,
       now: 3.14159265,
     },
@@ -145,7 +150,7 @@ const someMap = {
 Also works well on `Array`...
 
 ```typescript
-import 'map-literal';
+import "map-literal";
 
 const someArray = [
   {
@@ -174,7 +179,7 @@ const someArray = [
 and even `Set`!
 
 ```typescript
-import 'map-literal';
+import "map-literal";
 
 const someSet = new Set([
   {
@@ -193,19 +198,19 @@ const someSet = new Set([
 Parsing JSON is very convenient...
 
 ```typescript
-import { jsonParse, jsonStringify } from 'map-literal';
+import { jsonParse, jsonStringify } from "map-literal";
 
 const jsonString =
   '{ "glossary": { "title": "example glossary", "GlossDiv": { "title": "S", "GlossList": { "GlossEntry": { "ID": "SGML", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 8879:1986", "GlossDef": { "para": "A meta-markup language, used to create markup languages such as DocBook.", "GlossSeeAlso": ["GML", "XML"] }, "GlossSee": "markup" } } } } }';
 
-// Structure comprised of Maps and Arrays
+// Map tree
 const someMap = jsonParse(jsonString);
 ```
 
 as well as stringifying to JSON.
 
 ```typescript
-import { jsonParse, jsonStringify } from 'map-literal';
+import { jsonParse, jsonStringify } from "map-literal";
 
 const someMap = {
   firstKey: 33,
@@ -218,7 +223,7 @@ const someMap = {
     deeper: {
       give: true,
       me: 777,
-      some: 'What',
+      some: "What",
       hamburger: null,
       now: 3.14159265,
     },
@@ -232,9 +237,9 @@ const jsonString = jsonStringify(someMap);
 Though not encouraged, you can convert the structure into `Object` if you want.
 
 ```typescript
-import 'map-literal';
+import "map-literal";
 
-// Map and Array Structure
+// Map tree
 const someMap = {
   firstKey: 33,
   secondKey: 66,
@@ -246,13 +251,13 @@ const someMap = {
     deeper: {
       give: true,
       me: 777,
-      some: 'What',
+      some: "What",
       hamburger: null,
       now: 3.14159265,
     },
   },
 }.asMapTree();
 
-// Object and Array structure
+// Object tree
 const someObject = someMap.asObjectTree();
 ```
