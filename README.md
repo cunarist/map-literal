@@ -268,7 +268,7 @@ const jsonString = jsonStringify(someMap);
 
 ## Using TypeScript
 
-Contents of the returned value has `any` type.
+Contents of the returned value have `any` type.
 
 ```typescript
 import "map-literal";
