@@ -286,7 +286,7 @@ const someMap = {
 const varOne = someMap; // Map<string, any>
 ```
 
-Therefore, if you need to clarify types of items extracted from the tree, you will need to manually perform type assertion.
+Therefore, if you need to clarify types of items extracted from the tree, you have to manually perform type assertion.
 
 ```typescript
 import "map-literal";
