@@ -1,5 +1,5 @@
-import objectsToMaps from "./as-map-tree";
-import mapsToObjects from "./as-object-tree";
+import "./as-map-tree";
+import "./as-object-tree";
 
 export function jsonParse(json: string): any {
   const parsed = JSON.parse(json);
@@ -14,9 +14,9 @@ export function jsonParse(json: string): any {
 
 export function jsonStringify(original: any): string {
   if (original.constructor == Map) {
-    return JSON.stringify(mapsToObjects.convertMap(original));
+    return JSON.stringify(original.asObjectTree());
   } else if (original.constructor == Array) {
-    return JSON.stringify(mapsToObjects.convertArray(original));
+    return JSON.stringify(original.asObjectTree());
   } else {
     return JSON.stringify(original);
   }
