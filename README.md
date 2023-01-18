@@ -22,7 +22,7 @@
 
 Convenient way to use Maps with Object-like syntax in JavaScript and TypeScript
 
-```TypeScript
+```typescript
 import "map-literal"; // Just import it and everything is ready
 
 // This is a Map, not an Object
@@ -69,7 +69,7 @@ There are 3 container types in JavaScript and TypeScript:
 
 `Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
 
-```TypeScript
+```typescript
 const someObject = {
   firstProperty: 33,
   secondProperty: 66,
@@ -87,7 +87,7 @@ As you can see, all objects have underlying attributes even if we haven't explic
 
 Unlike `Object`, `Map` type provides higher performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
 
-```TypeScript
+```typescript
 const someMap = new Map();
 someMap.set("firstKey", 33);
 someMap.set("secondKey", 66);
@@ -97,7 +97,7 @@ someMap.values(); // [33, 66]
 
 So now we know that `Map` is the proper dictionary type. However, manually creating a `Map` tree via its normal syntax is quite cumbersome and not so intuitive.
 
-```TypeScript
+```typescript
 const someMap = new Map();
 someMap.set("firstKey", 33);
 someMap.set("secondKey", 66);
@@ -126,7 +126,7 @@ npm install map-literal
 
 This is the basic map literal syntax.
 
-```TypeScript
+```typescript
 import "map-literal";
 
 // We meet again
@@ -151,7 +151,7 @@ const someMap = {
 
 Also works well on `Array`...
 
-```TypeScript
+```typescript
 import "map-literal";
 
 const someArray = [
@@ -180,7 +180,7 @@ const someArray = [
 
 and even `Set`!
 
-```TypeScript
+```typescript
 import "map-literal";
 
 const someSet = new Set([
@@ -199,7 +199,7 @@ const someSet = new Set([
 
 Though not encouraged, you can convert the structure into `Object` if you want.
 
-```TypeScript
+```typescript
 import "map-literal";
 
 // Map tree
@@ -229,7 +229,7 @@ const someObject = someMap.asObjectTree();
 
 Parsing JSON is easy.
 
-```TypeScript
+```typescript
 import { jsonParse, jsonStringify } from "map-literal";
 
 const jsonString =
@@ -241,7 +241,7 @@ const someMap = jsonParse(jsonString);
 
 Stringifying to JSON is also easy.
 
-```TypeScript
+```typescript
 import { jsonParse, jsonStringify } from "map-literal";
 
 const someMap = {
