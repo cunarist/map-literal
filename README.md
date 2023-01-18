@@ -109,16 +109,16 @@ someMap.set("inner", innerMap);
 
 That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
 
+# Glossary
+
+- Map tree: Structure made up of `Map`, `Array` and possibly `Set`. This is the recommended way of storing complex data.
+- Object tree: Structure made up of `Object`, `Array` and possibly `Set`. Not recommended since `Object` is not appropriate for storing key-value pairs of data.
+
 # Installation
 
 ```bash
 npm install map-literal
 ```
-
-# Glossary
-
-- Map tree: Structure made up of `Map`, `Array` and possibly `Set`. This is the recommended way of storing complex data.
-- Object tree: Structure made up of `Object`, `Array` and possibly `Set`. Not recommended since `Object` is not appropriate for storing key-value pairs of data.
 
 # Usage
 
