@@ -1,8 +1,6 @@
 import objectsToMaps from "./as-map-tree";
 import mapsToObjects from "./as-object-tree";
 
-export { objectsToMaps, mapsToObjects };
-
 export function jsonParse(json: string): any {
   const parsed = JSON.parse(json);
   if (parsed.constructor == Object) {
