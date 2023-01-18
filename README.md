@@ -25,7 +25,7 @@ Convenient way to use Maps with Object-like syntax in JavaScript and TypeScript
 ```typescript
 import "map-literal"; // Just import it and everything is ready
 
-// This is a Map, not an Object
+// This is a Map tree, not an Object tree
 const someMap = {
   firstKey: 33,
   secondKey: 66,
