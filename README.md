@@ -107,7 +107,7 @@ someMap.set("inner", innerMap);
 // This goes on and on...
 ```
 
-That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
+That's where map literal comes into play. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
 
 # Glossary
 
