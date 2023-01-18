@@ -1,55 +1,33 @@
-function convertObject(original: Object): Object {
-  const newlyCreated = new Object();
-  for (const [itemKey, itemValue] of Object.entries(original)) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertObject(itemValue);
-      } else if (itemValue.constructor == Map) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertMap(itemValue);
-      } else if (itemValue.constructor == Array) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertArray(itemValue);
-      } else if (itemValue.constructor == Set) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertSet(itemValue);
-      } else {
-        // @ts-ignore
-        newlyCreated[itemKey] = itemValue;
-      }
+function convert(original: any): any {
+  if (original != null) {
+    if (original.constructor == Object) {
+      return convertObject(original);
+    } else if (original.constructor == Map) {
+      return convertMap(original);
+    } else if (original.constructor == Array) {
+      return convertArray(original);
+    } else if (original.constructor == Set) {
+      return convertSet(original);
     } else {
-      // @ts-ignore
-      newlyCreated[itemKey] = itemValue;
+      return original;
     }
+  } else {
+    return original;
+  }
+}
+
+function convertObject(original: Object): Object {
+  const newlyCreated: { [index: string]: any } = new Object();
+  for (const [itemKey, itemValue] of Object.entries(original)) {
+    newlyCreated[itemKey] = convert(itemValue);
   }
   return newlyCreated;
 }
 
 function convertMap(original: Map<string, any>): Object {
-  const newlyCreated = new Object();
+  const newlyCreated: { [index: string]: any } = new Object();
   for (const [itemKey, itemValue] of original.entries()) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertObject(itemValue);
-      } else if (itemValue.constructor == Map) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertMap(itemValue);
-      } else if (itemValue.constructor == Array) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertArray(itemValue);
-      } else if (itemValue.constructor == Set) {
-        // @ts-ignore
-        newlyCreated[itemKey] = convertSet(itemValue);
-      } else {
-        // @ts-ignore
-        newlyCreated[itemKey] = itemValue;
-      }
-    } else {
-      // @ts-ignore
-      newlyCreated[itemKey] = itemValue;
-    }
+    newlyCreated[itemKey] = convert(itemValue);
   }
   return newlyCreated;
 }
@@ -57,21 +35,7 @@ function convertMap(original: Map<string, any>): Object {
 function convertArray(original: Array<any>): Array<any> {
   const newlyCreated = new Array<any>();
   for (const itemValue of original) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.push(convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.push(convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.push(convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.push(convertSet(itemValue));
-      } else {
-        newlyCreated.push(itemValue);
-      }
-    } else {
-      newlyCreated.push(itemValue);
-    }
+    newlyCreated.push(convert(itemValue));
   }
   return newlyCreated;
 }
@@ -79,21 +43,7 @@ function convertArray(original: Array<any>): Array<any> {
 function convertSet(original: Set<any>): Set<any> {
   const newlyCreated = new Set<any>();
   for (const itemValue of original) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.add(convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.add(convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.add(convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.add(convertSet(itemValue));
-      } else {
-        newlyCreated.add(itemValue);
-      }
-    } else {
-      newlyCreated.add(itemValue);
-    }
+    newlyCreated.add(convert(itemValue));
   }
   return newlyCreated;
 }

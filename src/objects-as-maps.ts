@@ -1,21 +1,25 @@
+function convert(original: any): any {
+  if (original != null) {
+    if (original.constructor == Object) {
+      return convertObject(original);
+    } else if (original.constructor == Map) {
+      return convertMap(original);
+    } else if (original.constructor == Array) {
+      return convertArray(original);
+    } else if (original.constructor == Set) {
+      return convertSet(original);
+    } else {
+      return original;
+    }
+  } else {
+    return original;
+  }
+}
+
 function convertObject(original: Object): Map<string, any> {
   const newlyCreated = new Map<string, any>();
   for (const [itemKey, itemValue] of Object.entries(original)) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.set(itemKey, convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.set(itemKey, convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.set(itemKey, convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.set(itemKey, convertSet(itemValue));
-      } else {
-        newlyCreated.set(itemKey, itemValue);
-      }
-    } else {
-      newlyCreated.set(itemKey, itemValue);
-    }
+    newlyCreated.set(itemKey, convert(itemValue));
   }
   return newlyCreated;
 }
@@ -23,21 +27,7 @@ function convertObject(original: Object): Map<string, any> {
 function convertMap<K>(original: Map<K, any>): Map<K, any> {
   const newlyCreated = new Map<K, any>();
   for (const [itemKey, itemValue] of original.entries()) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.set(itemKey, convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.set(itemKey, convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.set(itemKey, convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.set(itemKey, convertSet(itemValue));
-      } else {
-        newlyCreated.set(itemKey, itemValue);
-      }
-    } else {
-      newlyCreated.set(itemKey, itemValue);
-    }
+    newlyCreated.set(itemKey, convert(itemValue));
   }
   return newlyCreated;
 }
@@ -45,21 +35,7 @@ function convertMap<K>(original: Map<K, any>): Map<K, any> {
 function convertArray(original: Array<any>): Array<any> {
   const newlyCreated = new Array<any>();
   for (const itemValue of original) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.push(convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.push(convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.push(convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.push(convertSet(itemValue));
-      } else {
-        newlyCreated.push(itemValue);
-      }
-    } else {
-      newlyCreated.push(itemValue);
-    }
+    newlyCreated.push(convert(itemValue));
   }
   return newlyCreated;
 }
@@ -67,21 +43,7 @@ function convertArray(original: Array<any>): Array<any> {
 function convertSet(original: Set<any>): Set<any> {
   const newlyCreated = new Set<any>();
   for (const itemValue of original) {
-    if (itemValue != null) {
-      if (itemValue.constructor == Object) {
-        newlyCreated.add(convertObject(itemValue));
-      } else if (itemValue.constructor == Map) {
-        newlyCreated.add(convertMap(itemValue));
-      } else if (itemValue.constructor == Array) {
-        newlyCreated.add(convertArray(itemValue));
-      } else if (itemValue.constructor == Set) {
-        newlyCreated.add(convertSet(itemValue));
-      } else {
-        newlyCreated.add(itemValue);
-      }
-    } else {
-      newlyCreated.add(itemValue);
-    }
+    newlyCreated.add(convert(itemValue));
   }
   return newlyCreated;
 }
