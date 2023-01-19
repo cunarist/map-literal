@@ -1,4 +1,4 @@
-import '../src/index';
+import "../src/index";
 
 const someMap = {
   firstKey: 33,
@@ -11,7 +11,7 @@ const someMap = {
     evenDeeper: {
       give: true,
       me: 777,
-      some: 'What',
+      some: "What",
       hamburger: null,
       now: 3.14159265,
     },
