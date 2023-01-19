@@ -1,13 +1,14 @@
 {
   "name": "map-literal",
-  "version": "1.3.0",
+  "version": "1.3.3",
   "description": "Convenient way to use Maps with Object-like syntax in JavaScript and TypeScript",
+  "license": "MIT",
   "main": "./lib/index.js",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "tsc",
     "clean": "rm -rf ./lib/",
     "cm": "cz",
     "lint": "eslint ./src/ --fix",
