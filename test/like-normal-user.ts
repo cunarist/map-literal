@@ -1,4 +1,4 @@
-import "../src/index";
+import { jsonParse } from "../src/index";
 
 const someMap = {
   firstKey: 33,
@@ -17,5 +17,7 @@ const someMap = {
     },
   },
 }.asMapTree();
-
 console.log(someMap);
+
+console.log(jsonParse("null"));
+console.log(null);

@@ -12,7 +12,7 @@
     "cm": "cz",
     "lint": "eslint ./src/ --fix",
     "semantic-release": "semantic-release",
-    "test": "npx ts-node ./test/index.spec.ts",
+    "test": "npx ts-node ./test/like-normal-user.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
