@@ -1,22 +1,13 @@
 [![npm package][npm-img]][npm-url]
 [![Downloads][downloads-img]][downloads-url]
 [![Issues][issues-img]][issues-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
 
-[downloads-img]: https://img.shields.io/npm/dt/map-literal
-[downloads-url]: https://www.npmtrends.com/map-literal
 [npm-img]: https://img.shields.io/npm/v/map-literal
 [npm-url]: https://www.npmjs.com/package/map-literal
-[issues-img]: https://img.shields.io/github/issues/ryansonshine/map-literal
-[issues-url]: https://github.com/ryansonshine/map-literal/issues
-[codecov-img]: https://codecov.io/gh/ryansonshine/map-literal/branch/main/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/ryansonshine/map-literal
-[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]: https://github.com/semantic-release/semantic-release
-[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]: http://commitizen.github.io/cz-cli/
+[downloads-img]: https://img.shields.io/npm/dt/map-literal
+[downloads-url]: https://www.npmtrends.com/map-literal
+[issues-img]: https://img.shields.io/github/issues/cunarist/map-literal
+[issues-url]: https://github.com/cunarist/map-literal/issues
 
 # About
 
@@ -25,7 +16,7 @@ Convenient way to use Maps with Object-like syntax in JavaScript and TypeScript
 ```typescript
 import "map-literal"; // Just import it and everything is ready
 
-// This is a Map, not an Object
+// This is a Map tree, not an Object tree
 const someMap = {
   firstKey: 33,
   secondKey: 66,
@@ -107,18 +98,18 @@ someMap.set("inner", innerMap);
 // This goes on and on...
 ```
 
-That's the reason this library exists. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
+That's where map literal comes into play. We need a way to use `Map` type conveniently just like when we use `Object`. This library aims to provide map literal feature as well as JSON conversion functions, which are not included in ECMAScript standard.
+
+# Glossary
+
+- Map tree: Structure made up of `Map`, `Array` and possibly `Set`. This is the recommended way of storing complex data.
+- Object tree: Structure made up of `Object`, `Array` and possibly `Set`. Not recommended since `Object` is not appropriate for storing key-value pairs of data.
 
 # Installation
 
 ```bash
 npm install map-literal
 ```
-
-# Glossary
-
-- Map tree: Structure made up of `Map`, `Array` and possibly `Set`. This is the recommended way of storing complex data.
-- Object tree: Structure made up of `Object`, `Array` and possibly `Set`. Not recommended since `Object` is not appropriate for storing key-value pairs of data.
 
 # Usage
 
@@ -268,7 +259,7 @@ const jsonString = jsonStringify(someMap);
 
 ## Using TypeScript
 
-Contents of the returned value has `any` type.
+Contents of the returned value have `any` type.
 
 ```typescript
 import "map-literal";
