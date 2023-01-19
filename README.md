@@ -1,13 +1,13 @@
-[![npm package][npm-img]][npm-url]
+[![NPM Package][npm-img]][npm-url]
 [![Downloads][downloads-img]][downloads-url]
-[![Issues][issues-img]][issues-url]
+[![Code Style][codestyle-img]][codestyle-url]
 
 [npm-img]: https://img.shields.io/npm/v/map-literal
 [npm-url]: https://www.npmjs.com/package/map-literal
 [downloads-img]: https://img.shields.io/npm/dt/map-literal
 [downloads-url]: https://www.npmtrends.com/map-literal
-[issues-img]: https://img.shields.io/github/issues/cunarist/map-literal
-[issues-url]: https://github.com/cunarist/map-literal/issues
+[codestyle-img]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
+[codestyle-url]: https://github.com/prettier/prettier
 
 # About
 
