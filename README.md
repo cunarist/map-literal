@@ -37,9 +37,9 @@ const someMap = {
 
 // Works well on nested structures
 console.log(someMap.get("secondKey")); // 66
-console.log(someMap.get("inner").get("deeper").get("me")); //777
+console.log(someMap.get("inner").get("deeper").get("me")); // 777
 someMap.get("inner").set("newKey", "newValue");
-console.log(someMap.get("inner").get("newKey")); //'newValue'
+console.log(someMap.get("inner").get("newKey")); // 'newValue'
 ```
 
 - `Map` literal syntax
