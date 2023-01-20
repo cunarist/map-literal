@@ -49,9 +49,9 @@ console.log(someMap.get("inner").get("newKey")); // 'newValue'
 
 There are 3 container types in JavaScript and TypeScript:
 
-- `Array`: Storage type for sequencial items as we all know
-- `Map`: Dictionary(Hashmap) type where data are stored in key-value pairs
-- `Set`: Storage type for sequencial items without any duplicated value
+- `Array`: Indexed with numbers
+- `Map`: Stored with key-value pairs
+- `Set`: Indexed with numbers without duplicates
 
 `Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
 
