@@ -1,13 +1,8 @@
-[![NPM Package][npm-img]][npm-url]
-[![Downloads][downloads-img]][downloads-url]
-[![Code Style][codestyle-img]][codestyle-url]
-
-[npm-img]: https://img.shields.io/npm/v/map-literal
-[npm-url]: https://www.npmjs.com/package/map-literal
-[downloads-img]: https://img.shields.io/npm/dt/map-literal
-[downloads-url]: https://www.npmtrends.com/map-literal
-[codestyle-img]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
-[codestyle-url]: https://github.com/prettier/prettier
+![npm](https://img.shields.io/npm/v/map-literal)
+![npm](https://img.shields.io/npm/dt/map-literal)
+![npm bundle size](https://img.shields.io/bundlephobia/min/map-literal)
+![NPM](https://img.shields.io/npm/l/map-literal)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # About
 
