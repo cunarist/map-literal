@@ -216,20 +216,20 @@ const someObject = someMap.asObjectTree();
 Parsing JSON is easy.
 
 ```typescript
-import { jsonParse, jsonStringify } from "map-literal";
+import { jsonToTree, treeToJson } from "map-literal";
 
 // String
 const jsonString =
   '{ "glossary": { "title": "example glossary", "GlossDiv": { "title": "S", "GlossList": { "GlossEntry": { "ID": "SGML", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 8879:1986", "GlossDef": { "para": "A meta-markup language, used to create markup languages such as DocBook.", "GlossSeeAlso": ["GML", "XML"] }, "GlossSee": "markup" } } } } }';
 
 // Map tree
-const someMap = jsonParse(jsonString);
+const someMap = jsonToTree(jsonString);
 ```
 
 Stringifying to JSON is also easy.
 
 ```typescript
-import { jsonParse, jsonStringify } from "map-literal";
+import { jsonToTree, treeToJson } from "map-literal";
 
 // Map tree
 const someMap = {
@@ -251,7 +251,7 @@ const someMap = {
 }.asMapTree();
 
 // String
-const jsonString = jsonStringify(someMap);
+const jsonString = treeToJson(someMap);
 ```
 
 ## Using TypeScript

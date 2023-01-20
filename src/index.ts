@@ -1,7 +1,7 @@
 import "./as-map-tree";
 import "./as-object-tree";
 
-export function jsonParse(
+export function jsonToTree(
   jsonString: string
 ): Map<string, any> | Array<any> | String | Number | Boolean | null {
   const parsed = JSON.parse(jsonString);
@@ -16,7 +16,7 @@ export function jsonParse(
   }
 }
 
-export function jsonStringify(
+export function treeToJson(
   original: Map<any, any> | Array<any> | String | Number | Boolean | null
 ): string {
   if (original == null) {
