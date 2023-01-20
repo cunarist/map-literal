@@ -71,7 +71,7 @@ console.log(someObject.hasOwnProperty); // [Function: hasOwnProperty] - Huh?
 
 As you can see, all objects have underlying attributes even if we haven't explicitly added it. Basically all attributes of an object are mixed with prototype attributes.
 
-Unlike `Object`, `Map` type provides higher performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
+Unlike `Object`, `Map` type provides high performance and convenient utility methods for dictionary operations. If you're used to Python or other object-oriented languages, this notion might look familiar.
 
 ```typescript
 const someMap = new Map();
