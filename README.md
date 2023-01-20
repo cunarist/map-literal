@@ -183,7 +183,7 @@ const someSet = new Set([
 ]).asMapTree();
 ```
 
-Though not encouraged, you can convert the structure into `Object` if you want.
+Though not encouraged, you can convert the structure into `Object` tree if you want.
 
 ```typescript
 import "map-literal";

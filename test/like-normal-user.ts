@@ -4,7 +4,7 @@ const someMap = {
   firstKey: 33,
   secondKey: 66,
   thirdKey: 99,
-  insideStructure: {
+  inner: {
     firstArray: [4, 8, 12, 16, 20],
     secondArray: [24, 28, 32, 36, 40],
     thirdArray: [44, 48, 52, 56, 60],
