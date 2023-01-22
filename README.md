@@ -31,10 +31,11 @@ const someMap = {
 }.asMapTree(); // Just add this at the end!
 
 // Works well on nested structures
-console.log(someMap.get("secondKey")); // 66
-console.log(someMap.get("inner").get("deeper").get("me")); // 777
+someMap.get("secondKey"); // 66
+someMap.get("inner").get("deeper").get("me"); // 777
+someMap.get("inner").get("firstArray")[2]; // 12
 someMap.get("inner").set("newKey", "newValue");
-console.log(someMap.get("inner").get("newKey")); // 'newValue'
+someMap.get("inner").get("newKey"); // 'newValue'
 ```
 
 - `Map` literal syntax
