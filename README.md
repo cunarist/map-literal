@@ -194,25 +194,13 @@ const someMap = {
   firstKey: 33,
   secondKey: 66,
   thirdKey: 99,
-  inner: {
-    firstArray: [4, 8, 12, 16, 20],
-    secondArray: [24, 28, 32, 36, 40],
-    thirdArray: [44, 48, 52, 56, 60],
-    deeper: {
-      give: true,
-      me: 777,
-      some: "What",
-      hamburger: null,
-      now: 3.14159265,
-    },
-  },
 }.asMapTree();
 
 // Object tree
 const someObject = someMap.asObjectTree();
 ```
 
-If you already have any `Object` tree variable from somewhere else, you can change it to `Map` tree with the same method. Opposite is also possible.
+If you already have any `Object` tree variable from somewhere else, you can convert it into `Map` tree with the same method. Opposite is also possible.
 
 ```typescript
 ...
