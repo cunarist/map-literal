@@ -1,6 +1,6 @@
 import { jsonToTree } from "../src/index";
 
-const someMap = {
+const someObject = {
   firstKey: 33,
   secondKey: 66,
   thirdKey: 99,
@@ -16,8 +16,8 @@ const someMap = {
       now: 3.14159265,
     },
   },
-}.asMapTree();
+} as any;
+const someMap = someObject.asMapTree();
+const someNewObject = someMap.asObjectTree();
 console.log(someMap);
-
-console.log(jsonToTree("null"));
-console.log(null);
+console.log(someNewObject);

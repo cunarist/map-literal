@@ -48,9 +48,12 @@ function convertSet(original: Set<any>): Set<any> {
   return newlyCreated;
 }
 
+type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
+type Flip<T> = IfAny<T, any, Map<string, any>>;
+
 declare global {
   interface Object {
-    asMapTree(): Map<string, any>;
+    asMapTree(): Flip<this>;
   }
   interface Map<K, V> {
     asMapTree(): Map<K, any>;
