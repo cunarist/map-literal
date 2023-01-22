@@ -40,7 +40,7 @@ someMap.get("inner").get("newKey"); // 'newValue'
 
 - `Map` literal syntax
 - Full support for nested structures
-- Full integration with all container types: `Array`, `Map`, `Set`
+- Full integration with all collection types: `Array`, `Map`, `Set`
 - Full TypeScript support
 - JSON to `Map` tree, `Map` tree to JSON conversion
 
@@ -48,13 +48,13 @@ someMap.get("inner").get("newKey"); // 'newValue'
 
 `Object` in JavaScript and TypeScript shouldn't be treated as dictionary!
 
-There are 3 container types in JavaScript and TypeScript:
+There are 3 collection types in JavaScript and TypeScript:
 
 - `Array`: Indexed with numbers
 - `Map`: Stored with key-value pairs
 - `Set`: Indexed with numbers without duplicates
 
-`Object` is never a container type. Rather it's a data structure for storing attributes of instances of classes(Constructor functions). Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
+`Object` is never a collection type. Rather it's a data structure for storing attributes of class instances. Although historically `Object` was recognized as a way to store data with names, it is not a proper way to store key-value pairs of data. Let's look at an example.
 
 ```typescript
 const someObject = {
@@ -184,7 +184,7 @@ const someSet = new Set([
 ]).asMapTree();
 ```
 
-Though not encouraged, you can convert the structure into `Object` tree if you want.
+You can convert the `Map` tree into `Object` tree if you want.
 
 ```typescript
 import "map-literal";
@@ -254,7 +254,7 @@ const jsonString = treeToJson(someMap);
 
 ## Using TypeScript
 
-Contents of the Map tree have `any` type.
+Contents of the `Map` tree have `any` type.
 
 ```typescript
 import "map-literal";
