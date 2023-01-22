@@ -15,6 +15,7 @@
     "notation",
     "constructor"
   ],
+  "type": "module",
   "main": "./lib/index.js",
   "files": [
     "lib/**/*"
