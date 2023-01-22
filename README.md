@@ -200,7 +200,7 @@ const someMap = {
 const someObject = someMap.asObjectTree();
 ```
 
-If you already have any `Object` tree variable from somewhere else, you can convert it into `Map` tree with the same method. Opposite is also possible.
+If you already have any `Object` tree variable from somewhere else such as API functions, you can convert it into `Map` tree with the same method. Opposite is also possible.
 
 ```typescript
 ...
