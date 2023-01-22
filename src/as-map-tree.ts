@@ -66,23 +66,31 @@ declare global {
   }
 }
 
-Object.prototype.asMapTree = function () {
-  if (this.constructor == Object) {
-    return convertObject(this);
-  } else {
-    throw new TypeError(
-      "'asMapTree' method can only be used on Object, Map, Array, Set types."
-    );
-  }
-};
-Map.prototype.asMapTree = function () {
-  return convertMap(this);
-};
-Array.prototype.asMapTree = function () {
-  return convertArray(this);
-};
-Set.prototype.asMapTree = function () {
-  return convertSet(this);
-};
+Object.defineProperty(Object.prototype, "asMapTree", {
+  value: function () {
+    if (this.constructor == Object) {
+      return convertObject(this);
+    } else {
+      throw new TypeError(
+        "'asMapTree' method can only be used on Object, Map, Array, Set types."
+      );
+    }
+  },
+});
+Object.defineProperty(Map.prototype, "asMapTree", {
+  value: function () {
+    return convertMap(this);
+  },
+});
+Object.defineProperty(Array.prototype, "asMapTree", {
+  value: function () {
+    return convertArray(this);
+  },
+});
+Object.defineProperty(Set.prototype, "asMapTree", {
+  value: function () {
+    return convertSet(this);
+  },
+});
 
 export default { convertObject, convertMap, convertArray, convertSet };
