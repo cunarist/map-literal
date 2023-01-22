@@ -212,6 +212,15 @@ const someMap = {
 const someObject = someMap.asObjectTree();
 ```
 
+If you already have any `Object` tree variable from somewhere else, you can change it to `Map` tree with the same method. Opposite is also possible.
+
+```typescript
+...
+someObject; // Object Tree from somewhere else
+const someMap = someObject.asMapTree(); // Map Tree
+const someNewObject = someMap.asObjectTree(); // Object Tree
+```
+
 ## Dealing with JSON
 
 Parsing JSON is easy.
