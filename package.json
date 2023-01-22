@@ -7,6 +7,14 @@
     "type": "git",
     "url": "https://github.com/cunarist/map-literal.git"
   },
+  "homepage": "https://cunarist.com/map-literal",
+  "keywords": [
+    "map",
+    "object",
+    "literal",
+    "notation",
+    "constructor"
+  ],
   "main": "./lib/index.js",
   "files": [
     "lib/**/*"
