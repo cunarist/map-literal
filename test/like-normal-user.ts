@@ -1,4 +1,4 @@
-import { jsonToTree } from "../src/index";
+import "../src/index";
 
 const someObject = {
   firstKey: 33,
