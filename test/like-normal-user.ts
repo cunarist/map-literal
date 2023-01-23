@@ -1,4 +1,4 @@
-import "../src/index";
+import { treeToJson } from "../src/index";
 
 const someObject = {
   firstKey: 33,
@@ -21,3 +21,10 @@ const someMap = someObject.asMapTree();
 const someNewObject = someMap.asObjectTree();
 console.log(someMap);
 console.log(someNewObject);
+console.log(
+  treeToJson({
+    firstKey: 33,
+    secondKey: 66,
+    thirdKey: 99,
+  })
+);

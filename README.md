@@ -216,7 +216,7 @@ Parsing JSON is easy.
 ```typescript
 import { jsonToTree, treeToJson } from "map-literal";
 
-// String
+// string
 const jsonString =
   '{ "glossary": { "title": "example glossary", "GlossDiv": { "title": "S", "GlossList": { "GlossEntry": { "ID": "SGML", "SortAs": "SGML", "GlossTerm": "Standard Generalized Markup Language", "Acronym": "SGML", "Abbrev": "ISO 8879:1986", "GlossDef": { "para": "A meta-markup language, used to create markup languages such as DocBook.", "GlossSeeAlso": ["GML", "XML"] }, "GlossSee": "markup" } } } } }';
 
@@ -248,8 +248,19 @@ const someMap = {
   },
 }.asMapTree();
 
-// String
+// string
 const jsonString = treeToJson(someMap);
+```
+
+Even if the input is an `Object` tree, JSON conversion still works well.
+
+```typescript
+// string
+const jsonString = treeToJson({
+  firstKey: 33,
+  secondKey: 66,
+  thirdKey: 99,
+});
 ```
 
 ## Using TypeScript

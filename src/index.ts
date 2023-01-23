@@ -3,7 +3,7 @@ import "./as-object-tree";
 
 export function jsonToTree(
   jsonString: string
-): Map<string, any> | Array<any> | String | Number | Boolean | null {
+): Map<string, any> | Array<any> | string | number | boolean | null {
   const parsed = JSON.parse(jsonString);
   if (parsed == null) {
     return parsed;
@@ -17,7 +17,14 @@ export function jsonToTree(
 }
 
 export function treeToJson(
-  original: Map<any, any> | Array<any> | String | Number | Boolean | null
+  original:
+    | Object
+    | Map<any, any>
+    | Array<any>
+    | string
+    | number
+    | boolean
+    | null
 ): string {
   if (original == null) {
     return JSON.stringify(original);
