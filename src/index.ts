@@ -28,6 +28,8 @@ export function treeToJson(
 ): string {
   if (original == null) {
     return JSON.stringify(original);
+  } else if (original.constructor == Object) {
+    return JSON.stringify(original.asObjectTree());
   } else if (original.constructor == Map) {
     return JSON.stringify(original.asObjectTree());
   } else if (original.constructor == Array) {
